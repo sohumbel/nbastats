@@ -27,6 +27,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "nbastats-uyhu.onrender.com"
 ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3001",
+]
 
 
 # Application definition

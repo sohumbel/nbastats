@@ -1,0 +1,1 @@
+/nbastatsproject contains the relevant django code for all NBA players between 1980-2023.
