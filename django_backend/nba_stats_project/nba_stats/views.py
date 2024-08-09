@@ -2,15 +2,19 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.db.models import Q
-from rest_framework import generics
+from rest_framework import generics, filters
 from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
 from .models import Player
 from .serializers import PlayerSerializer
 
+
+
 class PlayerList(generics.ListAPIView):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'position']
 
 class PlayerDetail(generics.ListAPIView):
     serializer_class = PlayerSerializer
@@ -34,6 +38,8 @@ class PlayerDetail(generics.ListAPIView):
     
 class YearlyStats(generics.ListAPIView):
     serializer_class = PlayerSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'position']
 
     def get_queryset(self):
         year = self.kwargs['year']

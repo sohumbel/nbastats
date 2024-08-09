@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-2fw&hlm01wsd9qm_!frwv87^o80k#we(4#2k2gp_z&95!hd)wn
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "nbastats-uyhu.onrender.com"
+    "nbastats-uyhu.onrender.com", "localhost"
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3001",
