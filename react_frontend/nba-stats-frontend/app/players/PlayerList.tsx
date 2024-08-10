@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState,Suspense} from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
@@ -12,7 +12,7 @@ interface Player {
   position: string;
 }
 
-export default function PlayerList() {
+  function PlayerListContent() {
   const [players, setPlayers] = useState<Player[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -41,7 +41,7 @@ export default function PlayerList() {
     }, 300)
 
     return () => clearTimeout(debounce)
-  }, [searchTerm])
+  }, [searchTerm, year])
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value)
@@ -76,5 +76,13 @@ export default function PlayerList() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function PlayerList() {
+  return (
+    <Suspense fallback={<div className="text-center mt-8">Loading...</div>}>
+      <PlayerListContent />
+    </Suspense>
   )
 }
