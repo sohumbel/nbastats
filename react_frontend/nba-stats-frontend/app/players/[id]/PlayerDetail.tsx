@@ -74,7 +74,7 @@ export default function PlayerDetail({ id }: { id: string }) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="shadow-md rounded-lg p-6">
-        <h1 className="text-3xl font-bold mb-4">{player.name}'s {player.year} Statistics</h1>
+        <h1 className="text-3xl font-bold mb-4">{`${player.name}'s ${player.year} Statistics`}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h2 className="text-2xl font-semibold mb-2">General Info</h2>
